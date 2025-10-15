@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorogis Limited - BHP Xplor 2026 Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .deck-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .controls button {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .controls button:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .slide-counter {
+            color: white;
+            font-weight: 600;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin: 20px 0;
+            min-height: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            margin: 30px 0;
+        }
+
+        .content-section h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .content-section p, .content-section li {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .risk-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .risk-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+
+        .risk-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .company-name {
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+                min-height: auto;
+            }
+
+            .slide-title {
+                font-size: 32px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active">
+            <div class="logo-section">
+                <div class="company-name">DOROGIS LIMITED</div>
+                <div class="tagline">Powering Africa's Critical Minerals Future</div>
+            </div>
+            <div style="text-align: center; margin-top: 80px;">
+                <h2 style="font-size: 36px; color: #333; margin-bottom: 20px;">BHP Xplor 2026 Application</h2>
+                <h3 style="font-size: 28px; color: #667eea; margin-bottom: 40px;">Dorogis Critical Minerals Exploration Initiative (DCMEI)</h3>
+                <p style="font-size: 20px; color: #666;">Unlocking Nigeria's Lithium-Cesium-Tantalum Belt</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Opportunity -->
+        <div class="slide">
+            <h1 class="slide-title">The Opportunity</h1>
+            <h2 class="slide-subtitle">Northern Nigeria's Untapped Critical Minerals</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Mining Licenses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Key States</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">220t</div>
+                    <div class="stat-label">Lithium Produced</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2021</div>
+                    <div class="stat-label">Operations Start</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Strategic Location: The LCT Belt</h3>
+                <p>We have traced the Lithium-Cesium-Tantalum Belt across Nasarawa, Kogi, Kwara, and Plateau States - a geological corridor rich in pegmatites essential for the global clean energy transition.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Key Resources</h3>
+                <ul>
+                    <li><strong>Primary:</strong> Lithium (spodumene, lepidolite)</li>
+                    <li><strong>Secondary:</strong> Copper, Lead, Iron, Tantalum</li>
+                    <li><strong>Target Grade:</strong> 1.0-1.4% Li2O with high-grade shoots up to 2.2%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Why This Matters -->
+        <div class="slide">
+            <h1 class="slide-title">Why This Matters</h1>
+            <h2 class="slide-subtitle">Critical Minerals for Global Energy Transition</h2>
+
+            <div class="two-column">
+                <div>
+                    <div class="content-section">
+                        <h3>Global Context</h3>
+                        <ul>
+                            <li>Lithium demand projected to increase 40x by 2040</li>
+                            <li>Africa holds <5% of global production despite vast reserves</li>
+                            <li>Supply chain diversification urgently needed</li>
+                            <li>ESG-compliant sources increasingly critical</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="content-section">
+                        <h3>Nigeria's Advantage</h3>
+                        <ul>
+                            <li>Politically stable mineral-rich corridor</li>
+                            <li>Government-backed mining sector reform</li>
+                            <li>Strategic proximity to growing African markets</li>
+                            <li>Untapped pegmatite belt comparable to global districts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Market Validation</h3>
+                <p>Major players including Thor Explorations and Ganfeng Lithium have invested heavily in Nigeria's central corridor, with Ganfeng establishing a large-scale processing facility in Nasarawa State - validating the geological potential that underpins our project.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Our Innovation -->
+        <div class="slide">
+            <h1 class="slide-title">Our Innovation</h1>
+            <h2 class="slide-subtitle">The Dorogis Integrated Exploration Model (DIEM)</h2>
+
+            <div class="content-section">
+                <h3>Technology-Driven Discovery</h3>
+                <p>We've developed a proprietary exploration framework that combines cutting-edge technology with geological expertise:</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">1. Earth Observation</div>
+                    <p>Satellite and radar data analysis to map regional structures, alteration zones, and lithological variations. Integration of multispectral data, digital elevation models, and aeroradiometric grids.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2. Drone-Assisted Exploration</div>
+                    <p>High-resolution magnetometry, LiDAR, and hyperspectral sensors collect detailed local-scale data. Defines brittle structures, pegmatite patterns, and mineral halos.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">3. AI-Assisted Modeling</div>
+                    <p>Machine learning integrates geophysical, geochemical, and structural parameters to generate and rank exploration targets with unprecedented accuracy.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">4. Ground Validation</div>
+                    <p>Systematic trenching, core drilling, and geochemical analysis confirm discoveries and refine resource models.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Proven Results -->
+        <div class="slide">
+            <h1 class="slide-title">Proven Results</h1>
+            <h2 class="slide-subtitle">From Concept to Production Since 2021</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">220t</div>
+                    <div class="stat-label">Lithium Extracted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">135t</div>
+                    <div class="stat-label">Lead Produced</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">180t</div>
+                    <div class="stat-label">Copper Produced</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Active Sites</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Technical Achievements</h3>
+                <ul>
+                    <li><strong>Software Platform:</strong> Fully functional proprietary geospatial system piloted across multiple sites</li>
+                    <li><strong>LCT Belt Mapping:</strong> Successfully traced and validated genetic links to younger granite intrusions</li>
+                    <li><strong>Core Confirmations:</strong> Spodumene and lepidolite verified in multiple pegmatite bodies</li>
+                    <li><strong>Resource Pipeline:</strong> New lithium-bearing pegmatite clusters identified with supportive geochemistry</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Government Recognition</h3>
+                <p>Ministry of Mines and Steel Development has granted us over 50 licenses, recognizing our technology-driven, responsible approach to exploration and development.</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Mineral Systems Framework -->
+        <div class="slide">
+            <h1 class="slide-title">Scientific Foundation</h1>
+            <h2 class="slide-subtitle">LCT Pegmatite Mineral Systems Model</h2>
+
+            <div class="content-section">
+                <h3>Components of Our System</h3>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Source</h3>
+                        <p>Younger granite province provides fertile parental magmas with high fractionation levels and lithium-enriched melts.</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Pathway</h3>
+                        <p>Second-order shear zones and brittle-ductile structures focus late magmatic fluids into favorable host rocks.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Trap</h3>
+                        <p>Pegmatite swarms within cupola positions and structural dilations concentrate lithium minerals.</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Evidence</h3>
+                        <p>Coherent Li, Cs, Ta anomalies with K/Rb ratios and Nb/Ta systematics confirming highly fractionated LCT pegmatites.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Global Analogues Validate Our Model</h3>
+                <ul>
+                    <li><strong>Greenbushes (Australia):</strong> World's largest hard-rock lithium operation with similar structural controls</li>
+                    <li><strong>Bikita (Zimbabwe):</strong> 60+ years of production from African LCT pegmatites</li>
+                    <li><strong>Tanco (Canada):</strong> Zoned pegmatite with lithium-tantalum mineralization</li>
+                    <li><strong>Kings Mountain (USA):</strong> Shear-controlled spodumene swarms</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Target Scale -->
+        <div class="slide">
+            <h1 class="slide-title">Target Scale & Grade</h1>
+            <h2 class="slide-subtitle">District-Scale Potential</h2>
+
+            <div class="two-column">
+                <div>
+                    <div class="content-section">
+                        <h3>Deposit Scale</h3>
+                        <div class="highlight-box">
+                            <p><strong>Individual Deposits:</strong></p>
+                            <ul>
+                                <li>10-30 million tonnes each</li>
+                                <li>1.0-1.5% Li2O average grade</li>
+                                <li>Multiple stacked lenses</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box">
+                            <p><strong>Aggregate Potential:</strong></p>
+                            <ul>
+                                <li>50-100 million tonnes corridor</li>
+                                <li>8-12 km pegmatite corridors mapped</li>
+                                <li>Multiple target zones identified</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="content-section">
+                        <h3>Grade Expectations</h3>
+                        <div class="highlight-box">
+                            <p><strong>Primary Lithium:</strong></p>
+                            <ul>
+                                <li>Average: 1.0-1.4% Li2O</li>
+                                <li>High-grade shoots: 1.6-2.2% Li2O</li>
+                                <li>By-products: 200-400 ppm Ta2O5</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box">
+                            <p><strong>Secondary Targets:</strong></p>
+                            <ul>
+                                <li>Copper: 0.4-0.8% Cu</li>
+                                <li>Lead: 1-3% Pb</li>
+                                <li>Iron: 30-45% Fe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <p><strong>Basis:</strong> Conservative density factors, outcrop mapping, drone geophysics, trench/core confirmations, and analogue comparison with producing LCT districts globally.</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Risk Management -->
+        <div class="slide">
+            <h1 class="slide-title">Risk Management</h1>
+            <h2 class="slide-subtitle">Proactive Above-Ground Strategy</h2>
+
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Risk Category</th>
+                        <th>Mitigation Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Regulatory</strong></td>
+                        <td>Direct Ministry partnerships, digitized compliance tracking, participation in federal reform programs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Community Relations</strong></td>
+                        <td>Inclusive consultation framework, local employment priority, artisanal miner training, Social Performance Officers from host communities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infrastructure</strong></td>
+                        <td>Modular operations, drone logistics, solar-hybrid power, seasonal planning with geospatial data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Environmental</strong></td>
+                        <td>EO-based screening, low-footprint drone surveys, mandatory impact assessments, rehabilitation programs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security</strong></td>
+                        <td>Agency coordination, GPS vehicle tracking, safety protocols, real-time digital monitoring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Security</strong></td>
+                        <td>Redundant backups, secured cloud servers, multi-factor authentication, regular audits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 9: 12-Month Milestones -->
+        <div class="slide">
+            <h1 class="slide-title">12-Month Roadmap</h1>
+            <h2 class="slide-subtitle">Accelerated Path to Resource Definition</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Q1-Q2 2026: Advanced Earth Observation</div>
+                    <p>Complete national-scale mapping of all 50 sites. Integrate new multispectral/radar data with AI-driven software. Output: Unified geospatial database of priority corridors.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Q2-Q3 2026: Drone Surveys</div>
+                    <p>High-resolution magnetometry, LiDAR, hyperspectral surveys across 10 prospective zones. Produce 3D structural models for trenching and drilling targets.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Q3-Q4 2026: Drilling & Resource Definition</div>
+                    <p>Systematic trenching and diamond drilling on three confirmed prospects. Define initial inferred resource for at least one deposit.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Q4 2026: Pilot Processing</div>
+                    <p>Test lithium-bearing material through modular extraction units. Establish recovery rates and concentrate specifications.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Ongoing: ESG & Partnerships</div>
+                    <p>Community Inclusion Program launch (100 trained participants). Formalize at least one strategic international partnership.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Q1 2027: Technical Report</div>
+                    <p>Publish comprehensive report with resource estimates, metallurgical data, and ESG performance metrics.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Why Xplor -->
+        <div class="slide">
+            <h1 class="slide-title">Why BHP Xplor?</h1>
+            <h2 class="slide-subtitle">Accelerating Our Path to Global Impact</h2>
+
+            <div class="content-section">
+                <h3>How Xplor Transforms Our Timeline</h3>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">1. Financial Acceleration</h3>
+                <p>Scale drone surveys, expand drilling programs, deploy advanced sampling technologies, integrate higher-resolution EO data, accelerate lab throughput. <strong>Result:</strong> Complete resource delineation in one cycle vs. multiple seasons.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">2. Technical Excellence</h3>
+                <p>Access BHP's global expertise in structural geology, remote sensing, and mineral systems modeling. Refine our understanding of LCT Belt dynamics. <strong>Result:</strong> Convert exploration data into compliant international resource estimates.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">3. ESG Leadership</h3>
+                <p>Implement BHP best practices in environmental stewardship, H&S, and community relations. Align with ICMM and IFC Performance Standards. <strong>Result:</strong> Enhanced credibility and long-term social license.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">4. Global Platform</h3>
+                <p>BHP brand association opens co-investment opportunities, downstream collaboration, and infrastructure partnerships. <strong>Result:</strong> Accelerated path to securing critical mineral supply chains from Africa.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">5. Technology Validation</h3>
+                <p>Benchmark our AI-assisted models against BHP's proprietary systems. Demonstrate DIEM as scalable exploration framework. <strong>Result:</strong> Position for continental expansion.</p>
+            </div>
+        </div>
+
+        <!-- Slide 11: Five-Year Vision -->
+        <div class="slide">
+            <h1 class="slide-title">Five-Year Vision</h1>
+            <h2 class="slide-subtitle">From Exploration to Production Leader</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Year 1: Resource Definition</div>
+                    <p>Establish first compliant inferred lithium resource. Expand software platform for real-time data integration. Build technical foundation for feasibility.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Year 2: Resource Growth & Feasibility</div>
+                    <p>Grow resource base beyond 50Mt lithium-bearing pegmatites. Complete metallurgical testing and pilot processing. Initiate Preliminary Economic Assessment and ESIA.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Year 3: Pre-Feasibility & Infrastructure</div>
+                    <p>Complete PFS confirming economic viability. Develop access roads, renewable power systems, modular beneficiation units. Evolve platform into national exploration database.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Year 4: Strategic Integration</div>
+                    <p>Formalize partnerships with battery/tech/mining companies. Establish domestic lithium concentrate upgrading plant. Scale ESG programs and community development.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Year 5: Commercial Production</div>
+                    <p>Transition to early commercial production targeting 100,000 tpa lithium concentrate. Integrate copper, lead, iron by-products. Expand exploration regionally. Position Dorogis as continental critical minerals leader.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Impact & ESG -->
+        <div class="slide">
+            <h1 class="slide-title">Responsible Mining</h1>
+            <h2 class="slide-subtitle">ESG at the Core of Everything We Do</h2>
+
+            <div class="two-column">
+                <div>
+                    <div class="content-section">
+                        <h3>Environmental Commitment</h3>
+                        <ul>
+                            <li>Low-footprint drone exploration minimizes land disturbance</li>
+                            <li>EO-based screening identifies sensitive zones pre-deployment</li>
+                            <li>Mandatory impact assessments on all sites</li>
+                            <li>Active rehabilitation programs with local farmers</li>
+                            <li>Renewable energy integration (solar-hybrid systems)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="content-section">
+                        <h3>Social Impact</h3>
+                        <ul>
+                            <li>Local employment as first priority</li>
+                            <li>Gender inclusion programs</li>
+                            <li>Artisanal miner formalization and training</li>
+                            <li>Community consultation before all field activities</li>
+                            <li>Transparent benefit-sharing frameworks</li>
+                            <li>Social Performance Officers from host communities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Our Founding Belief</h3>
+                <p style="font-size: 20px; font-style: italic;">"Mineral exploration can and must be done responsibly. Through BHP Xplor, we aim to demonstrate that responsible exploration in emerging markets is not only achievable but also commercially viable."</p>
+            </div>
+
+            <div class="content-section">
+                <h3>Alignment with International Standards</h3>
+                <p>Operating in accordance with ICMM principles, IFC Performance Standards, and Nigerian ESG regulations. Digital traceability ensures transparency across all operations.</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: The Team -->
+        <div class="slide">
+            <h1 class="slide-title">Our Competitive Edge</h1>
+            <h2 class="slide-subtitle">Technology + Local Expertise + Proven Execution</h2>
+
+            <div class="content-section">
+                <h3>What Sets Dorogis Apart</h3>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Nigerian-Led</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Years Operating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Licensed Sites</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Proven</div>
+                    <div class="stat-label">Production Track Record</div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Proprietary Technology</h3>
+                        <ul>
+                            <li>Custom geospatial software integrating national geological framework</li>
+                            <li>AI-driven target ranking system</li>
+                            <li>Multi-scale data fusion (satellite to drone to ground)</li>
+                            <li>Real-time operational monitoring platform</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Local Knowledge</h3>
+                        <ul>
+                            <li>Deep understanding of Nigerian geology and mineral systems</li>
+                            <li>Established government and community relationships</li>
+                            <li>Proven ability to operate in challenging environments</li>
+                            <li>Cultural competency and social license</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Track Record of Innovation</h3>
+                <p>We didn't just identify the LCT Belt—we built the technology platform to explore it systematically. Our integrated approach combines:</p>
+                <ul>
+                    <li><strong>Data Science:</strong> Machine learning models trained on Nigerian geological signatures</li>
+                    <li><strong>Field Operations:</strong> Agile teams experienced in complex terrain</li>
+                    <li><strong>Stakeholder Management:</strong> Government partnerships and community engagement frameworks</li>
+                    <li><strong>Rapid Iteration:</strong> Continuous feedback loops between technology and ground truth</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 14: Market Context -->
+        <div class="slide">
+            <h1 class="slide-title">Market Context</h1>
+            <h2 class="slide-subtitle">Nigeria's Emerging Lithium Hub</h2>
+
+            <div class="content-section">
+                <h3>Regional Activity Validates Our Thesis</h3>
+                <p>Since 2021, Nigeria's central corridor has experienced a surge in lithium exploration and development:</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #667eea;">Major Players Active in Region</h3>
+                <ul>
+                    <li><strong>Ganfeng Lithium:</strong> Establishing large-scale processing facility in Nasarawa State</li>
+                    <li><strong>Thor Explorations:</strong> Confirmed lithium-bearing pegmatites across Oyo, Kwara, Ekiti; planning systematic drilling</li>
+                    <li><strong>Avatar New Energy & Canmax Technologies:</strong> Constructing lithium refineries with 50,000+ tpa combined capacity</li>
+                    <li><strong>National Iron Ore Mining Company:</strong> Itakpe operations anchor regional infrastructure</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Infrastructure Advantages</h3>
+                <ul>
+                    <li>Plateau State's established mining workforce from historic tin-columbite operations</li>
+                    <li>Ajaokuta Steel Plant and associated logistics networks</li>
+                    <li>Federal government commitment to rehabilitate steel and iron facilities (2024)</li>
+                    <li>Growing domestic value chain for battery minerals</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="highlight-box">
+                    <h3 style="color: #667eea;">Geological Validation</h3>
+                    <p>Nigerian Geological Survey Agency confirms widespread pegmatite intrusions containing Li, Sn, Ta, Nb across the same corridor we're exploring.</p>
+                </div>
+                <div class="highlight-box">
+                    <h3 style="color: #667eea;">Strategic Timing</h3>
+                    <p>First-mover advantage in systematically exploring the most prospective segments of Nigeria's LCT Belt using advanced technology.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Critical Uncertainties -->
+        <div class="slide">
+            <h1 class="slide-title">Critical Uncertainties</h1>
+            <h2 class="slide-subtitle">What We're Working to Resolve</h2>
+
+            <div class="content-section">
+                <p style="font-size: 18px; margin-bottom: 30px;">Transparent assessment of geological and technical questions—and our systematic approach to answering them:</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">1. Granite Fertility & Fractionation</div>
+                    <p><strong>Question:</strong> Which younger granite intrusions are truly lithium-fertile?</p>
+                    <p><strong>Approach:</strong> Detailed geochemical and isotopic characterization to establish fertility indicators and predict additional pegmatite clusters.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2. Fluid Transport Pathways</div>
+                    <p><strong>Question:</strong> How effectively do structural features control pegmatite emplacement?</p>
+                    <p><strong>Approach:</strong> Drone magnetometry, field mapping, and structural modeling to quantify pathway controls on lithium-rich melt focusing.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">3. Grade Continuity & Zonation</div>
+                    <p><strong>Question:</strong> What are the vertical and lateral grade variations within pegmatite swarms?</p>
+                    <p><strong>Approach:</strong> Systematic core drilling, trench sampling, and assay programs to define grade consistency and economic potential.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">4. Hydrothermal Overprinting</div>
+                    <p><strong>Question:</strong> Have secondary processes redistributed lithium or introduced other mineral phases?</p>
+                    <p><strong>Approach:</strong> Mineralogical studies and alteration mapping to distinguish high-grade primary pegmatites from metamorphosed equivalents.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">5. Model Calibration & Scaling</div>
+                    <p><strong>Question:</strong> How do we optimize predictive models from regional to deposit scale?</p>
+                    <p><strong>Approach:</strong> Continuous data integration from drilling and core logging to refine machine learning frameworks and reduce targeting uncertainty.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p style="font-style: italic;">"Each uncertainty represents not a limitation, but an opportunity to deepen our understanding of Nigeria's lithium-bearing systems and establish a robust, repeatable exploration model."</p>
+            </div>
+        </div>
+
+        <!-- Slide 16: Investment Proposition -->
+        <div class="slide">
+            <h1 class="slide-title">Investment Proposition</h1>
+            <h2 class="slide-subtitle">De-Risked Opportunity with Scalable Returns</h2>
+
+            <div class="content-section">
+                <h3>Why Invest Now?</h3>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Proven Concept</h3>
+                        <ul>
+                            <li>535 tonnes of critical minerals already extracted</li>
+                            <li>Core confirmations validate mineral systems model</li>
+                            <li>Technology platform operational and tested</li>
+                            <li>Government recognition via 50+ licenses</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Market Timing</h3>
+                        <ul>
+                            <li>Critical minerals supply crisis intensifying</li>
+                            <li>African lithium severely underexplored</li>
+                            <li>ESG-compliant sources commanding premium</li>
+                            <li>First-mover advantage in Nigeria's LCT Belt</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Scale Potential</h3>
+                        <ul>
+                            <li>50-100Mt aggregate district potential</li>
+                            <li>Multiple deposit targets already mapped</li>
+                            <li>By-product credits enhance economics</li>
+                            <li>Expandable across regional corridor</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h3 style="color: #667eea;">Strategic Value</h3>
+                        <ul>
+                            <li>Technology platform applicable continent-wide</li>
+                            <li>Established operational capability in frontier market</li>
+                            <li>Government and community relationships in place</li>
+                            <li>Clear path to cash flow within 5 years</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>What BHP Xplor Enables</h3>
+                <p>With Xplor support, we compress a typical 5-7 year exploration timeline into 2-3 years while establishing international credibility and partnership networks that unlock downstream value creation opportunities.</p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Use of Funds -->
+        <div class="slide">
+            <h1 class="slide-title">Use of Xplor Support</h1>
+            <h2 class="slide-subtitle">Strategic Deployment for Maximum Impact</h2>
+
+            <div class="content-section">
+                <h3>How We'll Deploy Xplor Resources</h3>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Exploration Acceleration (40%)</div>
+                    <ul>
+                        <li>Expand drone survey coverage across priority corridors</li>
+                        <li>Increase drilling intensity on confirmed targets</li>
+                        <li>Acquire higher-resolution satellite and hyperspectral data</li>
+                        <li>Accelerate geochemical sampling and laboratory analysis</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Technology Enhancement (25%)</div>
+                    <ul>
+                        <li>Integrate advanced geophysical modeling tools</li>
+                        <li>Enhance AI/ML algorithms with BHP methodologies</li>
+                        <li>Expand software platform capabilities</li>
+                        <li>Deploy real-time data visualization systems</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Resource Definition (20%)</div>
+                    <ul>
+                        <li>Complete maiden resource estimate to international standards</li>
+                        <li>Conduct metallurgical test work and pilot processing</li>
+                        <li>Initiate preliminary economic assessment</li>
+                        <li>Develop resource modeling and reporting frameworks</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">ESG & Community (10%)</div>
+                    <ul>
+                        <li>Implement BHP-standard health, safety, and environmental systems</li>
+                        <li>Scale Community Inclusion Program</li>
+                        <li>Enhance monitoring and compliance frameworks</li>
+                        <li>Develop transparent reporting mechanisms</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Capacity Building (5%)</div>
+                    <ul>
+                        <li>Team training and skill development</li>
+                        <li>Knowledge transfer from BHP experts</li>
+                        <li>Participation in global exploration networks</li>
+                        <li>Technical conference presentations and publications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Call to Action -->
+        <div class="slide">
+            <h1 class="slide-title">Join Us in Making History</h1>
+            <h2 class="slide-subtitle">Building Africa's Future in Critical Minerals</h2>
+
+            <div class="content-section">
+                <h3>What Success Looks Like</h3>
+            </div>
+
+            <div class="highlight-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px;">
+                <h3 style="color: white; font-size: 32px; margin-bottom: 20px;">Our Vision for 2030</h3>
+                <ul style="font-size: 20px; line-height: 2;">
+                    <li>100,000+ tpa lithium concentrate production</li>
+                    <li>Africa's most advanced exploration technology platform</li>
+                    <li>Model for responsible, community-centered mining</li>
+                    <li>Strategic supplier to global battery manufacturers</li>
+                    <li>1,000+ direct jobs in host communities</li>
+                    <li>Proof that African innovation can lead the energy transition</li>
+                </ul>
+            </div>
+
+            <div class="content-section" style="margin-top: 40px;">
+                <h3>Why This Partnership Matters</h3>
+                <p style="font-size: 20px; line-height: 1.8;">This isn't just about discovering lithium in Nigeria. It's about demonstrating that:</p>
+                <ul style="font-size: 18px;">
+                    <li>Emerging markets can host world-class, ESG-compliant mineral exploration</li>
+                    <li>African geology and African innovation can meet global clean energy needs</li>
+                    <li>Technology-driven approaches can make exploration faster, cheaper, and more sustainable</li>
+                    <li>Local communities can be true partners in resource development</li>
+                    <li>The next generation of critical mineral discoveries will come from previously overlooked frontiers</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px; padding: 40px; background: #f8f9fa; border-radius: 15px;">
+                <h3 style="color: #667eea; font-size: 28px; margin-bottom: 20px;">Together, BHP and Dorogis can unlock Nigeria's lithium potential and build a new model for African mineral exploration.</h3>
+                <p style="font-size: 22px; font-weight: 600; color: #333;">Let's power the future—responsibly, sustainably, and equitably.</p>
+            </div>
+        </div>
+
+        <!-- Slide 19: Contact -->
+        <div class="slide">
+            <div style="text-align: center; padding: 80px 0;">
+                <div class="company-name" style="margin-bottom: 30px;">DOROGIS LIMITED</div>
+                <h2 style="font-size: 36px; color: #333; margin-bottom: 40px;">Thank You</h2>
+                
+                <div style="font-size: 22px; color: #666; line-height: 2; margin-bottom: 60px;">
+                    <p><strong>BHP Xplor 2026 Application</strong></p>
+                    <p>Dorogis Critical Minerals Exploration Initiative (DCMEI)</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
+                    <h3 style="color: #667eea; font-size: 24px; margin-bottom: 25px;">Ready to Connect</h3>
+                    <p style="font-size: 18px; color: #555; line-height: 1.8;">
+                        We welcome the opportunity to discuss how Dorogis and BHP can collaborate to unlock Nigeria's critical minerals potential and contribute meaningfully to the global energy transition.
+                    </p>
+                </div>
+
+                <div style="margin-top: 60px; font-size: 18px; color: #888;">
+                    <p><strong>Dorogis Limited</strong></p>
+                    <p>Northern Nigeria Operations</p>
+                    <p style="margin-top: 20px; font-style: italic;">"Innovation Born in Nigeria, Impact Felt Worldwide"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="previousSlide()">← Previous</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">19</span></span>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Touch gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) previousSlide();
+        }
+    </script>
+</body>
+</html>
